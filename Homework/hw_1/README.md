@@ -17,3 +17,20 @@
 * Между User (Студент) и Course через Enrollment: связь многие ко многим (M:N). Студент может учиться на нескольких курсах, а на одном курсе может быть много студентов.
 * Между User (Студент) и Review: связь один ко многим (1:N). Один студент может оставить множество отзывов к разным курсам.
 * Между Course и Review: связь один ко многим (1:N). У одного курса может быть много отзывов от разных студентов.
+
+## Задание 2. Логическая модель
+
+В логической модели определены следующие атрибуты, первичные (PK) и внешние (FK) ключи:
+* User: user_id (PK), first_name, last_name, birth_year, email, role.
+* Course: course_id (PK), instructor_id (FK), title, description, price, duration.
+* Lesson: lesson_id (PK), course_id (FK), title, content, order_number.
+* Enrollment: enrollment_id (PK), student_id (FK), course_id (FK), progress_percent.
+* Review: review_id (PK), course_id (FK), student_id (FK), rating, review_text.
+
+Кардинальность и типы связей:
+Все связи спроектированы как неидентифицирующие (каждая таблица имеет собственный суррогатный первичный ключ).
+
+* User (Teacher) 1 : N Course: один преподаватель может создать много курсов.
+* Course 1 : N Lesson: один курс содержит множество уроков.
+* User (Student) 1 : N Enrollment / Course 1 : N Enrollment: таблица связывает студентов и курсы (M:N).
+* Course 1 : N Review / User (Student) 1 : N Review: к одному курсу можно оставить множество отзывов от разных студентов.
